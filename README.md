@@ -2,7 +2,7 @@
 
 [Claude Code](https://claude.ai/code) skills for LibreOffice core development.
 
-These skills give Claude Code domain-specific knowledge about LibreOffice's build system, UNO component model, debugging infrastructure, and development conventions — enabling it to assist with LO development tasks accurately and efficiently.
+These skills give Claude Code domain-specific knowledge about LibreOffice's build system, UNO component model, debugging infrastructure, specification workflow, and development conventions — enabling it to assist with LO development tasks accurately and efficiently.
 
 ## Skills
 
@@ -30,6 +30,37 @@ Covers the full lifecycle: writing IDL files, registering in the build system, i
 | `scripts/gen_idl.py` | Generate IDL template files with correct license header and module nesting |
 | `scripts/check_build_registration.py` | Verify IDL is registered in `UnoApi_offapi.mk` with the correct macro |
 | `scripts/validate_component.py` | Validate `.component` XML for naming consistency |
+
+### lo-spec-writing
+
+Guide for writing LibreOffice development specs before implementation.
+
+Covers public contract definition, staged rollout, fallback design, extension validation plans, and compatibility boundaries for UNO or VCL-facing work.
+
+**Triggers on:** Writing or refining specs, phase plans, validation plans, fallback strategies, or API contracts before coding.
+
+**Reference docs:**
+
+| File | Content |
+|------|---------|
+| `references/spec-template.md` | Reusable structure for implementation-ready specs |
+| `references/contract-questions.md` | Checklist for public UNO or VCL contract precision |
+| `references/staged-validation.md` | Patterns for staged rollout, capability probing, and extension validation |
+
+### lo-spec-review
+
+Guide for spec-driven code review in LibreOffice.
+
+Covers reviewing commits or branches against specs, with emphasis on published contract quality, UNO-to-VCL bridge behavior, lifecycle risks, compatibility, and validation evidence.
+
+**Triggers on:** Reviewing patches against specs, reviewing public UNO APIs, checking lifecycle or listener behavior, or asking for spec-driven review findings.
+
+**Reference docs:**
+
+| File | Content |
+|------|---------|
+| `references/published-api-review-checklist.md` | Review checklist for public contracts and bridge code |
+| `references/validation-evidence.md` | How to judge tests, manual validation, and headless-safe coverage |
 
 ### lo-debug
 
@@ -67,6 +98,8 @@ Add the skill directories to your Claude Code settings (`.claude/settings.json`)
 ```json
 {
   "skills": [
+    "/path/to/lo-dev-skills/lo-spec-writing",
+    "/path/to/lo-dev-skills/lo-spec-review",
     "/path/to/lo-dev-skills/lo-uno-api",
     "/path/to/lo-dev-skills/lo-debug"
   ]

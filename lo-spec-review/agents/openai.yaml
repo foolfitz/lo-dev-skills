@@ -1,0 +1,4 @@
+interface:
+  display_name: "LO Spec Review"
+  short_description: "Review LibreOffice patches against specs and contracts"
+  default_prompt: "Use $lo-spec-review to review these LibreOffice commits against the spec and return findings only."

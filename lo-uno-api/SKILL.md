@@ -15,6 +15,13 @@ UNO (Universal Network Objects) is LibreOffice's component model. Developing a n
 4. **Register service** — Add a `<implementation>` entry in the module's `.component` XML file
 5. **Build & test** — Run `make offapi && make <module>` to compile and verify
 
+## Scope Boundary
+
+This skill covers implementation mechanics once the API direction is already chosen.
+
+- For writing the contract, staged validation plan, or fallback strategy before coding, use `lo-spec-writing`.
+- For reviewing published UNO or toolkit changes against a spec, use `lo-spec-review`.
+
 ## Decision Tree
 
 | I want to create... | IDL syntax | Reference | Script |
@@ -118,6 +125,8 @@ make CppunitTest_toolkit_a11y
 7. **Not adding source file to Library_*.mk** — The C++ implementation file must be listed in the module's `Library_*.mk` build file.
 
 8. **Alphabetical ordering** — IDL entries in `UnoApi_offapi.mk` must be alphabetically sorted within each module block. The build system doesn't enforce this, but code review will reject unordered entries.
+
+9. **Contract hidden in implementation** — If behavior depends on coordinate systems, flag semantics, listener preservation, or persistent state, capture it in the spec and IDL comments now rather than leaving reviewers to infer it from C++.
 
 ## Reference Index
 

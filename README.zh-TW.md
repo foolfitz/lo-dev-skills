@@ -2,7 +2,7 @@
 
 適用於 LibreOffice 核心開發的 [Claude Code](https://claude.ai/code) skills。
 
-這些 skills 為 Claude Code 注入 LibreOffice 建置系統、UNO 元件模型、偵錯基礎設施及開發慣例等領域知識，讓它能準確且高效地協助 LO 開發工作。
+這些 skills 為 Claude Code 注入 LibreOffice 建置系統、UNO 元件模型、偵錯基礎設施、spec workflow 及開發慣例等領域知識，讓它能準確且高效地協助 LO 開發工作。
 
 ## Skills 一覽
 
@@ -28,6 +28,33 @@
 | `scripts/gen_idl.py` | 產生含 MPL-2.0 授權標頭和正確 module 巢狀結構的 IDL 模板 |
 | `scripts/check_build_registration.py` | 驗證 IDL 是否已在 `UnoApi_offapi.mk` 中以正確的巨集註冊 |
 | `scripts/validate_component.py` | 驗證 `.component` XML 的 constructor 命名一致性 |
+
+### lo-spec-writing — Spec 撰寫指引
+
+協助在實作前先寫出可落地的 LibreOffice 開發規格，特別適合公開 UNO/VCL contract、分階段導入、fallback 策略與 extension 驗證計畫。
+
+**觸發情境：** 撰寫或整理 spec、phase plan、驗證計畫、fallback 設計，或在 coding 前先定義 API contract。
+
+**參考文件：**
+
+| 檔案 | 內容 |
+|------|------|
+| `references/spec-template.md` | 可直接套用的 implementation-ready spec 結構 |
+| `references/contract-questions.md` | 公開 UNO/VCL contract 精確化檢查表 |
+| `references/staged-validation.md` | 分階段 rollout、能力探測與 extension 驗證模式 |
+
+### lo-spec-review — Spec-driven Code Review 指引
+
+協助以 spec 為基準審查 LibreOffice patches，重點放在 published contract、UNO-to-VCL bridge、lifecycle 風險、相容性與驗證證據。
+
+**觸發情境：** 對照 spec review patch、審查公開 UNO API、檢查 listener/lifecycle 行為，或要求 spec-driven review findings。
+
+**參考文件：**
+
+| 檔案 | 內容 |
+|------|------|
+| `references/published-api-review-checklist.md` | 公開 contract 與 bridge code 的 review checklist |
+| `references/validation-evidence.md` | 如何判讀測試、手動驗證與 headless-safe coverage |
 
 ### lo-debug — 偵錯指引
 
@@ -63,6 +90,8 @@
 ```json
 {
   "skills": [
+    "/path/to/lo-dev-skills/lo-spec-writing",
+    "/path/to/lo-dev-skills/lo-spec-review",
     "/path/to/lo-dev-skills/lo-uno-api",
     "/path/to/lo-dev-skills/lo-debug"
   ]

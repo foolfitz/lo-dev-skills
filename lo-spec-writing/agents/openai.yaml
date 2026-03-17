@@ -1,0 +1,4 @@
+interface:
+  display_name: "LO Spec Writing"
+  short_description: "Draft staged LibreOffice specs and API contracts"
+  default_prompt: "Use $lo-spec-writing to draft a staged LibreOffice spec with a clear contract, fallback path, and validation plan."
