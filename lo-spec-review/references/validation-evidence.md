@@ -23,6 +23,8 @@ These are useful, but they should not be the only proof for a stable public cont
 - the test passes because the object exists, not because the contract is correct
 - compile success is presented as behavioral validation
 - the spec promises more precision than the tests actually prove
+- a sequence-returning geometry API is validated only on the first rectangle
+- a no-layout or hidden-paragraph contract is tested only through a weaker proxy such as hidden text
 
 ## Review Questions
 

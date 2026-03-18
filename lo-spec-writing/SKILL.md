@@ -32,6 +32,18 @@ This skill is especially useful for:
 5. Design validation in stages. Each stage should have a narrow hypothesis, a rollback path, and clear evidence that decides whether the next stage is justified.
 6. End with acceptance evidence, risks, and deferred work. If a known gap is being postponed, say where it belongs instead of leaving it implicit.
 
+## Published UNO Reminder
+
+When the spec introduces or changes a published UNO API, make sure the contract explicitly answers:
+
+- What scope and ordering does the API cover?
+- What happens out of scope: sentinel, `FALSE`, empty sequence, or exception?
+- If a method returns a name, is it a UI name, a UNO programmatic name, or an internal identity?
+- If a flag changes behavior, does it reuse existing Writer/UI semantics or define a new model?
+- If geometry is returned as a sequence, what is the fragment order and when is the sequence empty?
+
+If extension callers must rely on the behavior, capture these rules in the IDL comments as well, not only in the spec prose or C++ implementation.
+
 ## Output Expectations
 
 Aim for a spec that lets an implementer and a reviewer answer the same questions:
@@ -47,6 +59,7 @@ Aim for a spec that lets an implementer and a reviewer answer the same questions
 - For a starting structure: [references/spec-template.md](./references/spec-template.md)
 - For contract precision questions: [references/contract-questions.md](./references/contract-questions.md)
 - For staged rollout, fallback, and extension validation: [references/staged-validation.md](./references/staged-validation.md)
+- For public contract edges that are easy to leave implicit: [references/published-uno-contract-checklist.md](./references/published-uno-contract-checklist.md)
 
 ## Scope Boundary
 

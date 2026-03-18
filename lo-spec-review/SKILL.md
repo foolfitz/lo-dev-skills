@@ -34,11 +34,13 @@ This skill is especially useful for:
 Look for:
 
 - contract mismatches between spec, IDL, and implementation
+- return-value semantics that drift from existing UNO properties or services, especially UI names vs programmatic names
 - public type choices that will be painful to fix later
 - state that is documented like a property but implemented like a one-shot effect
+- contract edges that exist only in C++ or tests, not in IDL comments visible to external callers
 - broken inherited toolkit behavior such as listener paths
 - lifecycle, `dispose()`, or `SolarMutexGuard` mistakes
-- validation gaps, especially when only visual or manual evidence exists
+- validation gaps, especially when only visual or manual evidence exists, or when tests prove only a proxy instead of the exact contract
 
 Ignore pure style nits unless they hide one of the risks above.
 
@@ -58,6 +60,7 @@ If the spec is missing or ambiguous, say so and review against the strongest obs
 
 - For a concrete review checklist: [references/published-api-review-checklist.md](./references/published-api-review-checklist.md)
 - For judging tests and manual evidence: [references/validation-evidence.md](./references/validation-evidence.md)
+- For Writer UNO identity and naming checks: [references/writer-uno-identity-checks.md](./references/writer-uno-identity-checks.md)
 
 ## Scope Boundary
 

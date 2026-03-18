@@ -128,6 +128,12 @@ make CppunitTest_toolkit_a11y
 
 9. **Contract hidden in implementation** — If behavior depends on coordinate systems, flag semantics, listener preservation, or persistent state, capture it in the spec and IDL comments now rather than leaving reviewers to infer it from C++.
 
+10. **Wrong public name identity** — If a Writer UNO API returns style, page, or family names, first compare it with the closest existing UNO property such as `ParaStyleName`. Public UNO often expects programmatic names, not UI names or raw internal collection names.
+
+11. **Using the direct style instead of the effective style** — If the contract is about effective formatting, `GetTextColl()` may be wrong. Prefer the effective style source such as `GetAnyFormatColl()`, and convert built-in names through `SwStyleNameMapper::FillProgName(...)` when the API must expose UNO programmatic names.
+
+12. **IDL comments too weak for external callers** — Python, Java, and Basic callers do not read the C++ implementation. Scope, ordering, sentinel values, fragment order, and empty-sequence behavior belong in the IDL comments if they are part of the public contract.
+
 ## Reference Index
 
 | File | Purpose |
@@ -136,6 +142,7 @@ make CppunitTest_toolkit_a11y
 | [references/cpp-implementation.md](./references/cpp-implementation.md) | C++ implementation patterns and templates |
 | [references/build-registration.md](./references/build-registration.md) | Build system macros and service registration |
 | [references/common-base-interfaces.md](./references/common-base-interfaces.md) | Quick reference for commonly-used UNO interfaces |
+| [references/writer-public-name-semantics.md](./references/writer-public-name-semantics.md) | Writer-specific guidance for public style/name semantics |
 
 ## Scripts
 
